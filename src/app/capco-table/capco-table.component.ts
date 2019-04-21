@@ -7,10 +7,12 @@ import { CapcousersService } from '../services/capcousers.service';
   styleUrls: ['./capco-table.component.scss']
 })
 export class CapcoTableComponent implements OnInit {
-
-  constructor(capcousersservices:CapcousersService) { }
+  users;
+  constructor(private capcousersservices:CapcousersService) { }
 
   ngOnInit() {
+    this.users = this.capcousersservices.getUsers();
   }
+
 
 }

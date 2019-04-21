@@ -1,4 +1,4 @@
-[
+export const Users: any[] = [
 	{
 		"name": "Nell D. Michael",
 		"phone": "602-1033",

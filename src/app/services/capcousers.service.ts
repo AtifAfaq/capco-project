@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Users} from './sample_data';
 
 @Injectable({
   providedIn: 'root'
@@ -6,4 +7,8 @@ import { Injectable } from '@angular/core';
 export class CapcousersService {
 
   constructor() { }
+
+  getUsers(){
+    return Users;
+  }
 }
