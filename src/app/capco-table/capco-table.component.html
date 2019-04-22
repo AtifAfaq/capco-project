@@ -14,19 +14,14 @@
       <tr>
         <th class="capco-header" *ngFor="let column of columns">
           {{ column }}
-        </th>
-        <th class="capco-header">
-          Status Report
-        </th>
+        </th>        
       </tr>
     </thead>
     <tbody>
-      <tr class="content" *ngFor="let people of peoples | async">
-        <td *ngFor="let c of columns" class="dataStyler">
-          {{people[c]}}
-        </td>
-        <td class="dataStyler">
-          <button (click)="onSubmitStatus(people)" class="buttonStyle">Submit</button></td>
+      <tr class="content" *ngFor="let user of users">
+       <td *ngFor="let userproperty of columns">
+          {{user[userproperty]}}
+       </td>
       </tr>
     </tbody>
   </table>
