@@ -8,10 +8,12 @@ import { CapcousersService } from '../services/capcousers.service';
 })
 export class CapcoTableComponent implements OnInit {
   users;
+  columns;
   constructor(private capcousersservices:CapcousersService) { }
 
   ngOnInit() {
     this.users = this.capcousersservices.getUsers();
+    this.columns = this.capcousersservices.getColumns();
   }
 
 

@@ -1,5 +1,33 @@
+<div class="capco-table">
+  <br />
+  <!-- <div class="serarchFilter">
+    <select name="" id="" (change)="onFilterChange($event)">
+      <option value="">Select Filter Type</option>
+      <option *ngFor="let c of columns" [value]="c">{{ c }}</option>
+    </select>
+    <input *ngIf="filter" type="text" class="search" placeholder="Search by {{ filter }}" [(ngModel)]="query" />
 
-  <div *ngFor="let user of users">
-    {{user.name}}
-  </div>
-
+    <button *ngIf="filter" (click)="updateFilterResults()">Search</button>
+  </div> -->
+  <table class="">
+    <thead>
+      <tr>
+        <th class="capco-header" *ngFor="let column of columns">
+          {{ column }}
+        </th>
+        <th class="capco-header">
+          Status Report
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="content" *ngFor="let people of peoples | async">
+        <td *ngFor="let c of columns" class="dataStyler">
+          {{people[c]}}
+        </td>
+        <td class="dataStyler">
+          <button (click)="onSubmitStatus(people)" class="buttonStyle">Submit</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
