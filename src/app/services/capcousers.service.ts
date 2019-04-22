@@ -1,5 +1,9 @@
-import { Injectable } from '@angular/core';
+
 import {Users} from './sample_data';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { of } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +13,8 @@ export class CapcousersService {
   constructor() { }
 
   getUsers(){
-    return Users;
+    return of(Users);
+    
   }
 
   getColumns(): string[] {
