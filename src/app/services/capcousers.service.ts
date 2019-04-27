@@ -12,10 +12,17 @@ export class CapcousersService {
 
   constructor() { }
 
-  getUsers(){
-    return of(Users);
-    
-  }
+  getUsers(filter?: string,
+           query?: string,
+           start: number = 0,
+           stop?: number): Observable<any[]> {
+      const list = query ?
+      Users.filter(p => p[(filter || 'name')].toLowerCase().includes(query.toLowerCase())) :
+      Users;
+      return stop ?
+      of(list.slice(start, stop)) :
+      of(list.slice(start));
+    }
 
   getColumns(): string[] {
     return ["name", "phone", "email",
@@ -24,4 +31,21 @@ export class CapcousersService {
       "date_exit", "date_first",
       "date_recent", "url", "status", "id"]
   }
+
+  submitPostRequest(id, status): Promise<{ success: boolean }> {
+    let option = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id, status })
+    };
+
+    // fetch('/api/submit', options).then().then();
+
+    return new Promise((resolve, reject) => {
+      setTimeout(() => { resolve({ success: true }); }, 1500);
+    });
+  }
+
 }

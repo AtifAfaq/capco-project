@@ -9,20 +9,31 @@
 
     <button *ngIf="filter" (click)="updateFilterResults()">Search</button>
   </div> -->
+  <div class="serarchFilter">
+    <select name="" id="" (change)="onFilterChange($event)">
+      <option value="">Select Filter Type</option>
+      <option *ngFor="let c of columns" [value]="c">{{ c }}</option>
+    </select>
+
+    <input *ngIf="filter" type="text" [(ngModel)]="query" class="search" placeholder="Search by {{ filter }}" />
+
+    <button *ngIf="filter" (click)="updateFilterResults()">Search</button>
+  </div>
+
   <table class="">
     <thead>
       <tr>
         <th class="capco-header" *ngFor="let column of columns">
           {{ column }}
-        </th>        
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr class="capco-body" *ngFor="let user of users | async">
-       <td *ngFor="let userproperty of columns">
+        <td *ngFor="let userproperty of columns">
           {{user[userproperty]}}
-       </td>
+        </td>
       </tr>
     </tbody>
   </table>
-</div>
+</div>`
