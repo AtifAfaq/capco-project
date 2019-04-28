@@ -50,8 +50,8 @@ export class CapcoTableComponent implements OnInit {
     this.limit = +newLimit;
     this.startIndex = 0;
     this.page = 1;
-    this.users = this.capcousersservices.getUsers();
-    this.capcousersservices.getUsers(this.filter, this.query, this.startIndex).subscribe(list => {
+    this.users = this.capcousersservices.getUsers(this.filter, this.query, this.startIndex, (this.startIndex + this.limit));
+    this.capcousersservices.getUsers().subscribe(list => {
       this.pages = list.length / this.limit;
     });
   }
@@ -59,37 +59,30 @@ export class CapcoTableComponent implements OnInit {
   onPage(pageNumber: number): void {
     this.page = pageNumber;
     this.startIndex = (pageNumber * this.limit) - this.limit;
-    this.users = this.capcousersservices.getUsers();
+    this.users = this.capcousersservices.getUsers(this.filter, this.query, this.startIndex, (this.startIndex + this.limit));
   }
 
   onPrev(): void {
-    if (this.page === 1) { return; }
+    if(this.page === 1) { return; }
     this.page = this.page - 1;
     this.startIndex = this.startIndex - this.limit;
-    this.users = this.capcousersservices.getUsers();
-    // this.atService.getUsers(this.filter, this.query, this.startIndex, (this.startIndex - this.limit))
-    // .subscribe(list => {
-    //   console.log(this, list);
-    // })
+    this.users = this.capcousersservices.getUsers(this.filter, this.query, this.startIndex, (this.startIndex + this.limit));
   }
   onNext(next: boolean): void {
     if (this.page === this.pages) { return; }
     this.page = this.page + 1;
     this.startIndex = this.startIndex + this.limit;
-    this.users = this.capcousersservices.getUsers();
-    // this.atService.getUsers(this.filter, this.query, this.startIndex, (this.startIndex + this.limit))
-    // .subscribe(list => {
-    //   console.log(this, list);
-    // })
+    this.users = this.capcousersservices.getUsers(this.filter, this.query, this.startIndex, (this.startIndex + this.limit));
   }
 
-  //onSubmitStatus(users) {
-  // this.capcousersservices.submitPostRequest(users.id, users.status)
-  // .then(resp => {
-  //  console.log(resp);
-  // users.status = 'Read';
-  //  alert('Successful!');
-  // })
+  onSubmitStatus(people) {
+    this.capcousersservices.submitPostRequest(people.id, people.status)
+    .then(resp => {
+      console.log(resp);
+      people.status = 'Read';
+      alert('Successful!');
+    });
+  }
 }
 
 

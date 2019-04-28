@@ -27,4 +27,15 @@
       </tr>
     </tbody>
   </table>
-</div>`
+</div>
+
+<app-capco-pagination *ngIf="(users | async)" class="pagi"
+      [limit]="limit "
+      [page]="page"
+      [pages]="pages"
+      [resultsLimits]="resultsLimits"
+      (limitChanged)="onLimitChanged($event)"
+      (goPage)="onPage($event)"
+      (goPrev)="onPrev($event)"
+      (goNext)="onNext($event)">
+</app-capco-pagination>

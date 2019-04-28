@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output , EventEmitter } from '@angular/core';
-import {CapcousersService  } from '../services/capcousers.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { CapcousersService } from '../services/capcousers.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -25,7 +25,7 @@ export class CapcoPaginationComponent implements OnInit {
 
 
   public peoples: Observable<any[]>
-  constructor(private capcousersservices:CapcousersService) { }
+  constructor(private capcousersservices: CapcousersService) { }
 
   getMin(): number {
     return ((this.perPage * this.page) - this.perPage) + 1;
