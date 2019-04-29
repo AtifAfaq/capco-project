@@ -1,14 +1,14 @@
 <div class="capco-table">
   <br />
-  <div class="serarchFilter">
-    <select name="" id="" (change)="onFilterChange($event)">
+  <div>
+    <select name="" id="" (change)="onFilterChange($event)" class="capco-table-searchfilter">
       <option value="">Select Filter Type</option>
       <option *ngFor="let c of columns" [value]="c">{{ c }}</option>
     </select>
 
-    <input *ngIf="filter" type="text" [(ngModel)]="query" class="search" placeholder="Search by {{ filter }}" />
+    <input *ngIf="filter" type="text" [(ngModel)]="query" class="search" class="capco-table-searchfilter" placeholder="Search by {{ filter }}" />
 
-    <button *ngIf="filter" (click)="updateFilterResults()">Search</button>
+    <button *ngIf="filter" class="capco-table-searchfilter" (click)="updateFilterResults()">Search</button>
   </div>
 
   <table class="">
@@ -21,7 +21,7 @@
     </thead>
     <tbody>
       <tr class="capco-body" *ngFor="let user of users | async">
-        <td *ngFor="let userproperty of columns">
+        <td *ngFor="let userproperty of columns" class="capco-body-cell">
           {{user[userproperty]}}
         </td>
       </tr>
