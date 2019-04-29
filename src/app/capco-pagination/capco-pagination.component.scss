@@ -1,0 +1,16 @@
+.capco {
+    color: white;
+
+    &-pagination{        
+        color: grey;
+
+        &-margin {
+            margin-right: 10px;
+            padding: 5PX;
+        }
+
+        &-pagenum{
+            padding:4px;
+        }
+    }
+}

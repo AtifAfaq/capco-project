@@ -1,26 +1,24 @@
-<div>
-  <p>{{ page }}  of {{ pages }}</p>
-  <label for="">Select Limit To Show</label>
-  <select name="" id="" (change)="$event.target.value && onLimitChanged($event.target.value)">
+<div class='capco-pagination'>
+  <p>{{ page }} of {{ pages }}</p>
+
+  <label for="" class="capco-pagination-margin">Select Limit To Show</label>
+ 
+  <select name="" id="" (change)="$event.target.value && onLimitChanged($event.target.value)" class="capco-pagination-margin">
     <option value="">Select Limit</option>
     <option *ngFor="let l of resultsLimits" [value]="l">
       {{ l }}
     </option>
   </select>
 
-  <button 
-    (click)="onPrev()" 
-    [disabled]="page === 1 || loading">
+  <button (click)="onPrev()" class="capco-pagination-pagenum" [disabled]="page === 1 || loading">
     Previous
   </button>
 
-    <button *ngFor="let pageNum of getPagesCount()" (click)="onPage(pageNum)">
-      {{ pageNum }}
-    </button>
-    
-    <button 
-      (click)="onNext()" 
-      [disabled]="lastPage() || loading">
-      Next
-    </button>
+  <button *ngFor="let pageNum of getPagesCount()" (click)="onPage(pageNum)" class="capco-pagination-pagenum">
+    {{ pageNum }}
+  </button>
+
+  <button (click)="onNext()" class="capco-pagination-pagenum" [disabled]="lastPage() || loading">
+    Next
+  </button>
 </div>
