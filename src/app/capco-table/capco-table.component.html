@@ -1,4 +1,4 @@
-<div class="capco-table">
+<div class="capco-table-component">
   <br />
   <div>
     <select name="" id="" (change)="onFilterChange($event)" class="capco-table-searchfilter">
@@ -6,27 +6,29 @@
       <option *ngFor="let c of columns" [value]="c">{{ c }}</option>
     </select>
 
-    <input *ngIf="filter" type="text" [(ngModel)]="query" class="search" class="capco-table-searchfilter" placeholder="Search by {{ filter }}" />
+    <input *ngIf="filter" type="text" [(ngModel)]="query" class="search" class="capco-table-searchfilter"
+      placeholder="Search by {{ filter }}" />
 
     <button *ngIf="filter" class="capco-table-searchfilter" (click)="updateFilterResults()">Search</button>
   </div>
 
-  <table class="">
-    <thead>
+  <table class="capco-table">
+    <thead class="capco-header">
       <tr>
-        <th class="capco-header" *ngFor="let column of columns">
+        <th *ngFor="let column of columns">
           {{ column }}
         </th>
       </tr>
     </thead>
-    <tbody>
-      <tr class="capco-body" *ngFor="let user of users | async">
+    <tbody class="capco-body">
+      <tr *ngFor="let user of users | async">
         <td *ngFor="let userproperty of columns" class="capco-body-cell">
           {{user[userproperty]}}
         </td>
       </tr>
     </tbody>
   </table>
+
 </div>
 
 <app-capco-pagination *ngIf="(users | async)" class="capco-pagination"

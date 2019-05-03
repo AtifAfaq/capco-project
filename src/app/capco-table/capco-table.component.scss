@@ -1,29 +1,42 @@
-.capco-table{
-    height: 70vh;
-    overflow: scroll;
-    margin: 0;
-    padding: 0;
-    border: solid rgba(192, 39, 39, 0.884);
+.capco-table {
+  height: 70vh;
+  overflow: scroll;
+  margin: 0;
+  padding: 0;
+  border: solid rgba(192, 39, 39, 0.884);
 
-    &-searchfilter{
-        padding:5px;
-        margin:5px;
-    }
+  &-searchfilter {
+    padding: 5px;
+    margin: 5px;
+  }
 }
 .capco-header {
-    background: grey;
-    color:white;
-    height: 10vh;
-    width: 10vw;   
-    text-transform: capitalize;
+  background: grey;
+  color: white;
+  height: 10vh;
+  width: 10vw;
+  text-transform: capitalize;
+
+  tr {
+    display:block;
+  }
+
+  th {
+    width : 68px;
+  }
 }
-.capco-body{
-    color: black;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 15px;     
-    
-    &-cell{        
-        border: 2px solid grey;
-        background-color:lightskyblue;
-    }
+.capco-body {
+  color: black;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 15px;
+
+  display: block;
+  overflow: auto;
+  height: 200px;
+  width: 100%;
+
+  &-cell {
+    border: 2px solid grey;
+    background-color: lightskyblue;
+  }
 }
